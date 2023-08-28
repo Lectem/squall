@@ -206,25 +206,6 @@ void SStrInitialize() {
     }
 }
 
-char* SStrChr(char* string, char search) {
-    STORM_ASSERT(string);
-    STORM_VALIDATE(string, ERROR_INVALID_PARAMETER, nullptr);
-
-    if (!*string) {
-        return nullptr;
-    }
-
-    while (*string != search) {
-        string++;
-
-        if (!*string) {
-            return nullptr;
-        }
-    }
-
-    return string;
-}
-
 const char* SStrChr(const char* string, char search) {
     STORM_ASSERT(string);
     STORM_VALIDATE(string, ERROR_INVALID_PARAMETER, nullptr);
@@ -244,21 +225,6 @@ const char* SStrChr(const char* string, char search) {
     return string;
 }
 
-char* SStrChrR(char* string, char search) {
-    STORM_ASSERT(string);
-    STORM_VALIDATE(string, ERROR_INVALID_PARAMETER, nullptr);
-
-    char* result;
-
-    for (result = nullptr; *string; string++) {
-        if (*string == search) {
-            result = string;
-        }
-    }
-
-    return result;
-}
-
 const char* SStrChrR(const char* string, char search) {
     STORM_ASSERT(string);
     STORM_VALIDATE(string, ERROR_INVALID_PARAMETER, nullptr);
@@ -272,6 +238,14 @@ const char* SStrChrR(const char* string, char search) {
     }
 
     return result;
+}
+
+char* SStrChr(char* string, char search) {
+    return const_cast<char*>(SStrChr((const char*) string, search);
+}
+
+char* SStrChrR(char* string, char search) {
+    return const_cast<char*>(SStrChrR((const char*) string, search);
 }
 
 int32_t SStrCmp(const char* string1, const char* string2, size_t maxchars) {
@@ -422,10 +396,7 @@ uint32_t SStrPack(char* dest, const char* source, uint32_t destsize) {
     return static_cast<uint32_t>(i - dest);
 }
 
-size_t SStrPrintf(char* dest, size_t maxchars, const char* format, ...) {
-    va_list va;
-    va_start(va, format);
-
+int SStrPrintf(char* dest, size_t maxchars, const char* format, va_list ArgList) {    
     STORM_ASSERT(dest);
     STORM_ASSERT(format);
 
@@ -671,9 +642,11 @@ int32_t SStrToInt(const char* string) {
     return result;
 }
 
-void SStrUpper(char* string) {
-    while (*string) {
-        *string = static_cast<char>(toupper(*string));
-        string++;
+char* SStrUpper(char* string) {
+    char* curChar = string;
+    while (*curChar) {
+        *curChar = static_cast<char>(toupper(*curChar));
+        curChar++;
     }
+    return string;
 }

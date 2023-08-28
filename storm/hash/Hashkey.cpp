@@ -2,10 +2,6 @@
 #include "storm/Memory.hpp"
 #include "storm/String.hpp"
 
-bool HASHKEY_NONE::operator==(const HASHKEY_NONE& key) {
-    return true;
-}
-
 bool HASHKEY_PTR::operator==(const HASHKEY_PTR& key) {
     return this->m_key == key.m_key;
 }

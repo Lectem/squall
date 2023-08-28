@@ -15,6 +15,8 @@ class TSExportTableSimpleReuse : public TSHashTableReuse<T, HASHKEY_NONE> {
     T* New(THandle* handlePtr);
     T* Ptr(THandle handle);
 
+    HASHKEY_NONE* GetKeyPtr() { return &m_key; }
+
     private:
     // Member variables
     HASHKEY_NONE m_key;

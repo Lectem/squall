@@ -1,6 +1,7 @@
 #ifndef STORM_ERROR_HPP
 #define STORM_ERROR_HPP
 
+#include "storm/StormDLLDef.h"
 #include <cstdint>
 
 #if defined(WHOA_SYSTEM_WIN)
@@ -33,14 +34,10 @@
 
 [[noreturn]] void SErrDisplayAppFatal(const char* format, ...);
 
-int32_t SErrDisplayError(uint32_t errorcode, const char* filename, int32_t linenumber, const char* description, int32_t recoverable, uint32_t exitcode, uint32_t a7);
+D2FUNC_DLL_NP(STORM, SErrDisplayError, int32_t, __stdcall, (uint32_t messageId, const char* filename, int32_t linenumber, const char* description, int32_t recoverable, uint32_t exitcode), 0x12020); //Storm.#461
+D2FUNC_DLL_NP(STORM, SErrDisplayErrorFmt, int32_t, __cdecl, (uint32_t messageId, const char* filename, int32_t linenumber, int32_t recoverable, uint32_t uExitCode, char* Format, ...), 0x12570);     //Storm.#562
+D2FUNC_DLL_NP(STORM, SErrPrepareAppFatal, int32_t, __stdcall, (const char* filename, int32_t linenumber), 0x12710);                                                                                   //Storm.#564
 
-int32_t SErrDisplayErrorFmt(uint32_t errorcode, const char* filename, int32_t linenumber, int32_t recoverable, uint32_t exitcode, const char* format, ...);
-
-void SErrPrepareAppFatal(const char* filename, int32_t linenumber);
-
-void SErrSetLastError(uint32_t errorcode);
-
-uint32_t SErrGetLastError();
-
+D2FUNC_DLL_NP(STORM, SErrGetLastError, uint32_t, __cdecl, (), 0x126f0); //Storm.#463
+D2FUNC_DLL_NP(STORM, SErrSetLastError, void, __stdcall, (uint32_t dwErrCode), 0x12940); //Storm.#465
 #endif

@@ -71,7 +71,7 @@ int32_t SErrDisplayErrorFmt(uint32_t errorcode, const char* filename, int32_t li
     return SErrDisplayError(errorcode, filename, linenumber, buffer, recoverable, exitcode, 1);
 }
 
-void SErrPrepareAppFatal(const char* filename, int32_t linenumber) {
+int32_t SErrPrepareAppFatal(const char* filename, int32_t linenumber) {
     // TODO
 }
 

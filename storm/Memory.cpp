@@ -27,10 +27,11 @@ void SMemFree(void* ptr) {
     }
 }
 
-void SMemFree(void* ptr, const char* filename, int32_t linenumber, uint32_t flags) {
+int32_t SMemFree(void* ptr, const char* filename, int32_t linenumber, uint32_t flags) {
     if (ptr) {
         free(ptr);
     }
+    return 1;
 }
 
 void* SMemReAlloc(void* ptr, size_t bytes, const char* filename, int32_t linenumber, uint32_t flags) {

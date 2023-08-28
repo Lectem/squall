@@ -31,7 +31,7 @@ class HASHKEY_STRI : public HASHKEY_STR {
 class HASHKEY_NONE {
     public:
     // Member functions
-    bool operator==(const HASHKEY_NONE& key);
+    bool operator==(const HASHKEY_NONE& key) { return true; }
 };
 
 #endif
