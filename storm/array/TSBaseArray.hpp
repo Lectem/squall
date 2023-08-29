@@ -14,8 +14,8 @@ class TSBaseArray {
     T* m_data;
 
     // Virtual member functions
-    virtual const char* MemFileName() const;
-    virtual int32_t MemLineNo() const;
+    const char* MemFileName() const;
+    int32_t MemLineNo() const;
 
     // Member functions
     T& operator[](uint32_t index);
