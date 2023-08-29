@@ -32,9 +32,9 @@
     }                                            \
     (void)0
 
-[[noreturn]] void SErrDisplayAppFatal(const char* format, ...);
 
 D2FUNC_DLL_NP(STORM, SErrDisplayError, int32_t, __stdcall, (uint32_t messageId, const char* filename, int32_t linenumber, const char* description, int32_t recoverable, uint32_t exitcode), 0x12020); //Storm.#461
+D2FUNC_DLL_NP(STORM, SErrDisplayAppFatal, void, __declspec(noreturn), (char *Format, ...), 0x11f50);  //Storm.#561
 D2FUNC_DLL_NP(STORM, SErrDisplayErrorFmt, int32_t, __cdecl, (uint32_t messageId, const char* filename, int32_t linenumber, int32_t recoverable, uint32_t uExitCode, char* Format, ...), 0x12570);     //Storm.#562
 D2FUNC_DLL_NP(STORM, SErrPrepareAppFatal, int32_t, __stdcall, (const char* filename, int32_t linenumber), 0x12710);                                                                                   //Storm.#564
 
