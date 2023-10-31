@@ -30,7 +30,7 @@ char* SStrChr(char* string, char search);
 char* SStrChrR(char* string, char search);
 
 D2FUNC_DLL_NP(STORM, SStrLower, int, __stdcall, (char* Str), 0x2b250); //Storm.#579
-D2FUNC_DLL_NP(STORM, SStrPrintf, int, __cdecl, (char* DstBuf, size_t MaxCount, char* Format, ...), 0x2a570); //Storm.#578
+D2FUNC_DLL_NP(STORM, SStrPrintf, int, __cdecl, (char* DstBuf, size_t MaxCount, const char* Format, ...), 0x2a570); //Storm.#578
 
 D2FUNC_DLL_NP(STORM, SStrToFloat, float, __stdcall, (const char* string), 0x2a830);    //Storm.#574
 D2FUNC_DLL_NP(STORM, SStrToInt, int32_t, __stdcall, (const char* string), 0x2aa10); //Storm.#575
